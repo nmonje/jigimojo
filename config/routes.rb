@@ -1,4 +1,6 @@
 Jigimojo::Application.routes.draw do
+  resources :testings
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

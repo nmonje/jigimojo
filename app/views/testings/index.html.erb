@@ -1,0 +1,23 @@
+<h1>Listing testings</h1>
+
+<%= tags_of_image %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @testings.each do |testing| %>
+  <tr>
+    <td><%= link_to 'Show', testing %></td>
+    <td><%= link_to 'Edit', edit_testing_path(testing) %></td>
+    <td><%= link_to 'Destroy', testing, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Testing', new_testing_path %>
