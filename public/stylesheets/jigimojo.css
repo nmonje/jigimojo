@@ -1,0 +1,31 @@
+h1 {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center; 
+	font-size: 250px;
+}
+
+#jigi-logo {
+	font-family: 'Dancing Script', serif;
+  font-style: italic;
+  font-weight: 400;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 1.2;
+  color: #AA0000;
+}
+
+#mojo-logo {
+	font-family: 'Luckiest Guy', serif;
+  font-style: none;
+  font-weight: 400;
+  text-shadow: 15px 15px 15px #aaa;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 1.2;
+}
