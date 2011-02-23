@@ -31,11 +31,15 @@ GEM
     arel (2.0.8)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    cgi_multipart_eof_fix (2.5.0)
+    daemons (1.1.0)
     devise (1.1.7)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fastthread (1.0.7)
+    gem_plugin (0.2.3)
     hashie (1.0.0)
     hpricot (0.8.3)
     httpclient (2.1.6.1)
@@ -47,6 +51,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mongrel (1.1.5)
+      cgi_multipart_eof_fix (>= 2.4)
+      daemons (>= 1.0.3)
+      fastthread (>= 1.0.1)
+      gem_plugin (>= 0.2.3)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -89,6 +98,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise
+  mongrel
   rails (= 3.0.3)
   rockstar
   ruby-echonest

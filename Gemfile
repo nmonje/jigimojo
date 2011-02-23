@@ -5,6 +5,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'ruby-echonest'
 gem 'rockstar'
 gem 'devise'
+gem 'mongrel'
 
 # group :development, :test do
 #   gem 'webrat'

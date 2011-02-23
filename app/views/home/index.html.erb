@@ -1,2 +1,7 @@
+<% if venue_signed_in? %>
+	Welcome <%= current_venue.name %>. <%= link_to "Sign out", destroy_venue_session_path %>.
+<% else %>
+	Venues <%= link_to "log in", new_venue_session_path %> or <%= link_to "register", new_venue_registration_path %>.
+<% end %>
 
 <%= render 'logo' %>
