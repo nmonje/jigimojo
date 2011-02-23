@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Jigimojo::Application.config.secret_token = '96145ab67215b9db4d309d904ad05dcaa78106dd3806ba111f6074daac6254af1ad2d403ea79224b71742175b0bc57ff53e44d90d39d0b897e0dcb6e583d1d48'
+Jigimojo::Application.config.secret_token = '8c146943a78ac3dd286bf76027a22b7f1fa75b4a8e12caeeffd4df8efa478f23fc0660d944a2f88d047c1efdd66dcb78146d34a870ad2862a5b74aa267642c2a'
