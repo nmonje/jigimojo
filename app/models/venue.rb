@@ -4,5 +4,6 @@ class Venue < ActiveRecord::Base
 	belongs_to :user
 	has_many :patrons
 	has_many :events
+	has_many :attendees
 	
 end

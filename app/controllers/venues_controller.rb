@@ -11,6 +11,21 @@ class VenuesController < ApplicationController
     end
   end
 
+	def search
+		lat = 42
+		lng = -71
+	end
+	
+	def lookup
+		lat = params[:lat]
+		lng = params[:lng]
+		@venue = Venue.find_by_lat_and_lng(lat, lng)
+		
+		respond_to do |format|
+			format.html
+		end
+	end
+
   # GET /venues/1
   # GET /venues/1.xml
   def show

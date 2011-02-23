@@ -2,8 +2,10 @@
 
 one:
   user_id: 1
-  venue_id: 1
+  value_id: 1
+  time: 2011-02-23 15:18:44
 
 two:
   user_id: 1
-  venue_id: 1
+  value_id: 1
+  time: 2011-02-23 15:18:44

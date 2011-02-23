@@ -1,0 +1,7 @@
+<%= form_tag(venues_lookup_path, :method => 'get') do %>
+	<%= label_tag(:lat, "Latitude:") %>
+	<%= text_field_tag(:lat) %>
+	<%= label_tag(:lng, "Longitude:") %>
+	<%= text_field_tag(:lng) %>
+	<%= submit_tag("Lookup") %>
+<% end %>

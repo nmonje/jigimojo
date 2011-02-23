@@ -4,67 +4,79 @@
 	<b>Owner:</b>
 	<%= User.find_by_id(@venue.user_id).name %>
 </p>
-	<p>
-		<b>Description:</b>
-		<%= @venue.description %>
-	</p>
-	<p>
-		<b>Id:</b>
-		<%= @venue.id %>
-	</p>
-	
-	<p>
-		<b>Lat:</b>
-		<%= @venue.lat %>
-	</p>
+<p>
+	<b>Description:</b>
+	<%= @venue.description %>
+</p>
+<p>
+	<b>Id:</b>
+	<%= @venue.id %>
+</p>
 
-	<p>
-		<b>Lng:</b>
-		<%= @venue.lng %>
-	</p>
+<p>
+	<b>Lat:</b>
+	<%= @venue.lat %>
+</p>
 
-	<p>
-		<b>Current song name:</b>
-		<%= @venue.current_song_name %>
-	</p>
+<p>
+	<b>Lng:</b>
+	<%= @venue.lng %>
+</p>
 
-	<p>
-		<b>Current song artist:</b>
-		<%= @venue.current_song_artist %>
-	</p>
-	
-	<h3> Top Patrons </h3>
-	<table>
+<p>
+	<b>Current song name:</b>
+	<%= @venue.current_song_name %>
+</p>
+
+<p>
+	<b>Current song artist:</b>
+	<%= @venue.current_song_artist %>
+</p>
+
+<h3> Top Patrons </h3>
+<table>
+	<tr>
+		<th> User name </th>
+		<th> Mojo </th>
+	</tr>
+	<% @venue.patrons.sort_by{|p| p.mojo}.first(5).each do |patron| %>
 		<tr>
-			<th> User name </th>
-			<th> Mojo </th>
+			<td><%= User.find_by_id(patron.user_id).username %> </td>
+			<td><%= User.find_by_id(patron.user_id).mojo %> </td>
 		</tr>
-		<% @venue.patrons.sort_by{|p| p.mojo}.first(5).each do |patron| %>
-			<tr>
-				<td><%= User.find_by_id(patron.user_id).username %> </td>
-				<td><%= User.find_by_id(patron.user_id).mojo %> </td>
-			</tr>
-		<% end %>
-	</table>
-	
-	<h3> Events Here </h3>
-	<table>
+	<% end %>
+</table>
+
+<h3> Events Here </h3>
+<table>
+	<tr>
+		<th> Title </th>
+		<th> Time </th>
+	</tr>
+	<% @venue.events.each do |event| %>
 		<tr>
-			<th> Title </th>
-			<th> Time </th>
+			<td><%= link_to event.title, event_path(event) %> </td>
+			<td><%= event.time %> </td>
 		</tr>
-		<% @venue.events.each do |event| %>
-			<tr>
-				<td><%= link_to event.title, event_path(event) %> </td>
-				<td><%= event.time %> </td>
-			</tr>
-		<% end %>
-	</table>
-	<% if user_signed_in? and current_user.id = @venue.user_id %>
-			<%= link_to 'Add new event', new_event_path %> <br />
 	<% end %>
-	
-	<% if user_signed_in? and current_user.id = @venue.user_id %>
-			<%= link_to 'Edit this venue information', edit_venue_path(@venue) %>
+</table>
+<% if user_signed_in? and current_user.id = @venue.user_id %>
+		<%= link_to 'Add new event', new_event_path %> <br />
+<% end %>
+
+<h3> Currently Attending </h3>
+<table>
+	<tr>
+		<th> Username </th>
+	</tr>
+	<% @venue.attendees.each do |attendee| %>
+		<tr>
+			<td><%= User.find_by_id(attendee.user_id).name %> </td>
+		</tr>
 	<% end %>
-	<%= link_to 'Back', venues_path %>
+</table>
+
+<% if user_signed_in? and current_user.id = @venue.user_id %>
+		<%= link_to 'Edit this venue information', edit_venue_path(@venue) %>
+<% end %>
+<%= link_to 'Back', venues_path %>
