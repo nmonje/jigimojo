@@ -1,5 +1,8 @@
-<h1> <%= render 'home/logo' %> </h1>
+<% if user_signed_in? %>
+	<h1> <%= render 'home/logo' %> </h1>
+	Welcome <%= current_user.name %>. <%= link_to "Sign out", destroy_user_session_path %>.
+	<%= link_to "Venues", venues_path %>
+<% else %>
+	<%= link_to "Log in", new_user_session_path %> or <%= link_to "register", new_user_registration_path %>.
+<% end %>
 
-Welcome <%= current_user.name %>. <%= link_to "Sign out", destroy_user_session_path %>.
-
-<%= link_to "Venues", venues_path %>
