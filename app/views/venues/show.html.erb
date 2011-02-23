@@ -8,7 +8,11 @@
 		<b>Description:</b>
 		<%= @venue.description %>
 	</p>
-
+	<p>
+		<b>Id:</b>
+		<%= @venue.id %>
+	</p>
+	
 	<p>
 		<b>Lat:</b>
 		<%= @venue.lat %>
@@ -51,13 +55,13 @@
 		</tr>
 		<% @venue.events.each do |event| %>
 			<tr>
-				<td><%= event.title %> </td>
+				<td><%= link_to event.title, event_path(event) %> </td>
 				<td><%= event.time %> </td>
 			</tr>
 		<% end %>
 	</table>
 	<% if user_signed_in? and current_user.id = @venue.user_id %>
-			<%= link_to 'Add new event', root_path %>
+			<%= link_to 'Add new event', new_event_path %> <br />
 	<% end %>
 	
 	<% if user_signed_in? and current_user.id = @venue.user_id %>

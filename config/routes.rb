@@ -1,4 +1,6 @@
 Jigimojo::Application.routes.draw do
+  resources :events
+
   resources :venues
 
   devise_for :users
