@@ -5,6 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.recoverable
       t.rememberable
       t.trackable
+      t.boolean :is_venue
       t.integer :city_id
 
       # t.confirmable

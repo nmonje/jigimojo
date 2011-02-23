@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223025034) do
+ActiveRecord::Schema.define(:version => 20110223043035) do
 
   create_table "attendees", :force => true do |t|
     t.integer  "user_id"
@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(:version => 20110223025034) do
   end
 
   create_table "events", :force => true do |t|
-    t.float    "lat"
-    t.float    "lng"
     t.integer  "venue_id"
     t.string   "title"
     t.text     "description"
@@ -64,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20110223025034) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "is_venue"
     t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,22 +72,15 @@ ActiveRecord::Schema.define(:version => 20110223025034) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "venues", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
-    t.string   "reset_password_token"
-    t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "current_song_name"
+    t.string   "current_song_artist"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "venues", ["email"], :name => "index_venues_on_email", :unique => true
-  add_index "venues", ["reset_password_token"], :name => "index_venues_on_reset_password_token", :unique => true
 
 end
