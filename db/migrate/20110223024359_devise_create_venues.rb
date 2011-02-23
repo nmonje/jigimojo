@@ -5,6 +5,10 @@ class DeviseCreateVenues < ActiveRecord::Migration
       t.recoverable
       t.rememberable
       t.trackable
+      t.integer :city_id
+      t.text :description
+      t.string :current_song_name
+      t.string :current_song_artist
 
       # t.confirmable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both

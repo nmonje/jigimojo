@@ -84,6 +84,10 @@ ActiveRecord::Schema.define(:version => 20110223025034) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "city_id"
+    t.text     "description"
+    t.string   "current_song_name"
+    t.string   "current_song_artist"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
