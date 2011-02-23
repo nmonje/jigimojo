@@ -1,4 +1,16 @@
 Jigimojo::Application.routes.draw do
+  get "venue/index"
+
+  get "venue/show"
+
+  get "venue/new"
+
+  get "venue/edit"
+
+  get "venue/create"
+
+  get "venue/destroy"
+
   devise_for :users
 
   get "home/index"

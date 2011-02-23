@@ -1,7 +1,11 @@
 h1 {
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center; 
+	margin-left: 20px;
+	text-align: left; 
+	font-size: 46px;
+}
+
+#splash {
+	text-align:center;
 	font-size: 250px;
 }
 

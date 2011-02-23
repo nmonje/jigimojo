@@ -1,1 +1,5 @@
+<h1> <%= render 'home/logo' %> </h1>
+
 Welcome <%= current_user.name %>. <%= link_to "Sign out", destroy_user_session_path %>.
+
+<%= link_to "Venues", venue_index_path %>
