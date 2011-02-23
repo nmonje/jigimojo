@@ -10,9 +10,9 @@ h1 {
 }
 
 #jigi-logo {
-	font-family: 'Dancing Script', serif;
-  font-style: italic;
-  font-weight: 400;
+	font-family: 'Reenie Beanie', serif;
+  font-style: none;
+  font-weight: bold;
   text-shadow: none;
   text-decoration: none;
   text-transform: none;
@@ -23,7 +23,7 @@ h1 {
 }
 
 #mojo-logo {
-	font-family: 'Luckiest Guy', serif;
+	font-family: 'Slackey', serif;
   font-style: none;
   font-weight: 400;
   text-shadow: 15px 15px 15px #aaa;

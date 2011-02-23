@@ -1,4 +1,6 @@
 Jigimojo::Application.routes.draw do
+  resources :venues
+
   get "venue/index"
 
   get "venue/show"
