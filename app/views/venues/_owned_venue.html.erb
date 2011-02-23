@@ -1,0 +1,29 @@
+	<p>
+		<b>Description:</b>
+		<%= @venue.description %>
+	</p>
+
+	<p>
+		<b>Lat:</b>
+		<%= @venue.lat %>
+	</p>
+
+	<p>
+		<b>Lng:</b>
+		<%= @venue.lng %>
+	</p>
+
+	<p>
+		<b>Current song name:</b>
+		<%= @venue.current_song_name %>
+	</p>
+
+	<p>
+		<b>Current song artist:</b>
+		<%= @venue.current_song_artist %>
+	</p>
+	
+	<p>
+	
+	<%= link_to 'Edit this venue information', edit_venue_path(@venue) %>
+	<%= link_to 'Back', venues_path %>

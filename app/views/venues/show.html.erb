@@ -1,40 +1,66 @@
 <p id="notice"><%= notice %></p>
-
+<h2> <%= @venue.title %> </h2>
 <p>
-  <b>User:</b>
-  <%= @venue.user_id %>
+	<b>Owner:</b>
+	<%= User.find_by_id(@venue.user_id).name %>
 </p>
+	<p>
+		<b>Description:</b>
+		<%= @venue.description %>
+	</p>
 
-<p>
-  <b>Title:</b>
-  <%= @venue.title %>
-</p>
+	<p>
+		<b>Lat:</b>
+		<%= @venue.lat %>
+	</p>
 
-<p>
-  <b>Description:</b>
-  <%= @venue.description %>
-</p>
+	<p>
+		<b>Lng:</b>
+		<%= @venue.lng %>
+	</p>
 
-<p>
-  <b>Lat:</b>
-  <%= @venue.lat %>
-</p>
+	<p>
+		<b>Current song name:</b>
+		<%= @venue.current_song_name %>
+	</p>
 
-<p>
-  <b>Lng:</b>
-  <%= @venue.lng %>
-</p>
-
-<p>
-  <b>Current song name:</b>
-  <%= @venue.current_song_name %>
-</p>
-
-<p>
-  <b>Current song artist:</b>
-  <%= @venue.current_song_artist %>
-</p>
-
-
-<%= link_to 'Edit', edit_venue_path(@venue) %> |
-<%= link_to 'Back', venues_path %>
+	<p>
+		<b>Current song artist:</b>
+		<%= @venue.current_song_artist %>
+	</p>
+	
+	<h3> Top Patrons </h3>
+	<table>
+		<tr>
+			<th> User name </th>
+			<th> Mojo </th>
+		</tr>
+		<% @venue.patrons.sort_by{|p| p.mojo}.first(5).each do |patron| %>
+			<tr>
+				<td><%= User.find_by_id(patron.user_id).username %> </td>
+				<td><%= User.find_by_id(patron.user_id).mojo %> </td>
+			</tr>
+		<% end %>
+	</table>
+	
+	<h3> Events Here </h3>
+	<table>
+		<tr>
+			<th> Title </th>
+			<th> Time </th>
+		</tr>
+		<% @venue.events.each do |event| %>
+			<tr>
+				<td><%= event.title %> </td>
+				<td><%= event.time %> </td>
+			</tr>
+		<% end %>
+	</table>
+	<% if user_signed_in? and current_user.id = @venue.user_id %>
+			<%= link_to 'Add new event', root_path %>
+	<% end %>
+	
+	<% if user_signed_in? and current_user.id = @venue.user_id %>
+			<%= link_to 'Edit this venue information', edit_venue_path(@venue) %>
+	<% end %>
+	<%= link_to 'Back', venues_path %>
