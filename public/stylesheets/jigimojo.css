@@ -1,12 +1,20 @@
+body {
+background-color: #FFF;
+}
+
 h1 {
-	margin-left: 20px;
+	margin: 0px 20px 0px 0px;
 	text-align: left; 
-	font-size: 46px;
+	font-size: 40px;
 }
 
 #splash {
 	text-align:center;
-	font-size: 250px;
+	font-size: 240px;
+}
+
+#dash-logo {
+	float: left;
 }
 
 #jigi-logo {
@@ -19,17 +27,37 @@ h1 {
   letter-spacing: 0em;
   word-spacing: 0em;
   line-height: 1.2;
-  color: #AA0000;
+  color: #B60000;
 }
 
 #mojo-logo {
 	font-family: 'Slackey', serif;
   font-style: none;
   font-weight: 400;
-  text-shadow: 15px 15px 15px #aaa;
+  text-shadow: 4px 4px 4px #666;
   text-decoration: none;
   text-transform: none;
   letter-spacing: 0em;
   word-spacing: 0em;
   line-height: 1.2;
+  color: #000;
+}
+
+#splash #mojo-logo {
+  text-shadow: 16px 16px 16px #666;
+}
+
+a {
+	text-decoration: none;}
+a {
+	color: #C00;
+}
+
+a:visited {
+	color: #922;
+}
+
+a:hover {
+	color: #F66; 
+	text-decoration: underline;
 }

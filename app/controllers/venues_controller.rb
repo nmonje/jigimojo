@@ -47,7 +47,7 @@ class VenuesController < ApplicationController
   		attendee = {:name => user.name, :mojo => patron.mojo}
   		attendees << attendee
   	end
-  	respond_to do |format|
+  		respond_to do |format|
   		format.json { render :json => attendees }
 		end
 	end
@@ -99,11 +99,11 @@ class VenuesController < ApplicationController
   # PUT /venues/1.xml
   def update
     @venue = Venue.find(params[:id])
+		remove_old_attendees
+		give_mojo(@venue)
 				
     respond_to do |format|
       if @venue.update_attributes(params[:venue])
-    		remove_old_attendees
-				give_mojo(@venue)
         format.html { redirect_to(@venue, :notice => 'Venue was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -124,4 +124,28 @@ class VenuesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+	def remove_old_attendees
+		Attendee.all.each do |attendee|
+			if (Time.now - attendee.time > 1.hour)
+				attendee.destroy
+			end
+		end
+	end
+	
+	def give_mojo(venue)
+		venue.attendees.each do |attendee|
+			user = User.find_by_id(attendee.user_id)
+			if true # and maybe a more meaningful test?
+				patron = Patron.find_by_user_id_and_venue_id(attendee.user_id, venue.id)
+				if patron.nil?
+					patron = Patron.new(:user_id => attendee.user_id, :venue_id => attendee.venue_id,
+    													 :mojo => 1)
+    			patron.save
+				else
+					patron.update_attributes(:mojo => patron.mojo+1)
+				end
+			end
+		end
+	end
 end

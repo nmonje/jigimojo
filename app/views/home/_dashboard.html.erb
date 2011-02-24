@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-	<h1> <%= render 'home/logo' %> </h1>
+	<div id="dash-logo"> <h1> <%= render 'home/logo' %> </h1> </div>
 	Welcome <%= current_user.name %>. <%= link_to "Sign out", destroy_user_session_path %>.
 	<%= link_to "Venues", venues_path %>
 	<%= link_to "Check in", new_attendee_path %>

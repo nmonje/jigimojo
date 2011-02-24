@@ -68,10 +68,14 @@
 <table>
 	<tr>
 		<th> Username </th>
+		<th> Check in Time </th>
+		<th> Time here </th>
 	</tr>
 	<% @venue.attendees.each do |attendee| %>
 		<tr>
 			<td><%= User.find_by_id(attendee.user_id).name %> </td>
+			<td><%= attendee.time %></td>
+			<td><%= Time.now - attendee.time %></td>
 		</tr>
 	<% end %>
 </table>
