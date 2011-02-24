@@ -18,9 +18,21 @@ class AttendeesController < ApplicationController
   # POST /attendees
   # POST /attendees.xml
   def create
+  	previous = Attendee.find_all_by_user_id(params[:attendee][:user_id])
+  	if not previous.nil?
+  		previous.each {|p| p.destroy}
+  	end
     @attendee = Attendee.new(params[:attendee])
     @attendee.time = Time.now
-
+    
+    @patron = Patron.find_by_user_id_and_venue_id(@attendee.user_id, @attendee.venue_id)
+    if @patron.nil?
+    	@patron = Patron.new(:user_id => @attendee.user_id, :venue_id => @attendee.venue_id,
+    											 :mojo => 1)
+			@patron.save
+		else
+			@patron.update_attributes(:mojo => @patron.mojo+1)
+		end
     respond_to do |format|
       if @attendee.save
         format.html { redirect_to(root_path, :notice => 'Attendee was successfully created.') }

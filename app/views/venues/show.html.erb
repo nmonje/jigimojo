@@ -41,8 +41,8 @@
 	</tr>
 	<% @venue.patrons.sort_by{|p| p.mojo}.first(5).each do |patron| %>
 		<tr>
-			<td><%= User.find_by_id(patron.user_id).username %> </td>
-			<td><%= User.find_by_id(patron.user_id).mojo %> </td>
+			<td><%= User.find_by_id(patron.user_id).name %> </td>
+			<td><%= patron.mojo %> </td>
 		</tr>
 	<% end %>
 </table>

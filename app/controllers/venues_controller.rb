@@ -8,12 +8,11 @@ class VenuesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @venues }
+      format.json { render :json => @venues }
     end
   end
 
 	def search
-		lat = 42
-		lng = -71
 	end
 	
 	def lookup
@@ -23,6 +22,7 @@ class VenuesController < ApplicationController
 		
 		respond_to do |format|
 			format.html
+			format.json { render :json => @venue.id }
 		end
 	end
 
@@ -34,7 +34,25 @@ class VenuesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @venue }
+      format.json { render :json => @venue }
     end
+  end
+  
+  def attendees
+  	@venue = Venue.find(params[:id])
+  	
+  	respond_to do |format|
+  		format.json { render :json => @venue.attendees }
+		end
+	end
+  
+  
+  def current_song
+  	@venue = Venue.find(params[:id])
+  	song = {:title => @venue.current_song_name, :artist => @venue.current_song_artist}
+  	respond_to do |format|
+  		format.json { render :json => song}
+  	end
   end
 
   # GET /venues/new
@@ -75,9 +93,11 @@ class VenuesController < ApplicationController
   # PUT /venues/1.xml
   def update
     @venue = Venue.find(params[:id])
-
+				
     respond_to do |format|
       if @venue.update_attributes(params[:venue])
+    		remove_old_attendees
+				give_mojo(@venue)
         format.html { redirect_to(@venue, :notice => 'Venue was successfully updated.') }
         format.xml  { head :ok }
       else
