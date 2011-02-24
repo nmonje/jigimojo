@@ -31,7 +31,8 @@ class VenuesController < ApplicationController
   # GET /venues/1.xml
   def show
     @venue = Venue.find(params[:id])
-
+		remove_old_attendees
+		
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @venue }
@@ -128,9 +129,8 @@ class VenuesController < ApplicationController
 
 	def remove_old_attendees
 		Attendee.all.each do |attendee|
-			timein = (((Time.now.utc.hour) - attendee.time.hour)*60
-									 + (Time.now.utc.min - attendee.time.min))
-			if (timein >60)
+			timein = (((Time.now.utc.hour) - attendee.time.hour)*60 + (Time.now.utc.min - attendee.time.min))
+			if (timein > 60)
 				attendee.destroy
 			end
 		end

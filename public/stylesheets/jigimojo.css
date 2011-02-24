@@ -1,5 +1,6 @@
 body {
 background-color: #FFF;
+font-family: 'Buda', sans-serif;
 }
 
 
@@ -14,11 +15,13 @@ h2 {
 	font-size: 55px;
 	margin: 0px 10px 0px 0px;
 	font-family: 'Slackey', serif;
-	color: #B60000;
+	color: #000000;
 }
 
 h3 {
 	margin: 0px;
+	font-family: 'Reenie Beanie', serif;
+	font-size: 40px;
 }
 
 
@@ -64,17 +67,20 @@ h3 {
 a.dashboard_link {
 	font-family: 'Slackey', serif;
 	font-size: 16px;
-	color: #C00;
-	text-decoration: none;
 	font-weight: 400;
 	margin: 0px 20px 0px 10px;
 }
 
-a.dashboard_link:visited {
+a {
+	color: #C00;
+	text-decoration: none;
+}
+
+a_link:visited {
 	color: #922;
 }
 
-a.dashboard_link:hover {
+a:hover {
 	color: #F66; 
 	text-decoration: underline;
 }
@@ -93,8 +99,29 @@ hr.dashboard#lower {
 
 .your_venues {
 	float:left;
+	width: 400px;
+	margin-right: 50px;
+}
+
+.your_venues h2{
+	font-size: 45px;
 }
 
 .all_venues {
-	float:right;
+}
+
+table.venue_data {
+
+}
+
+table.venue_data td {
+	width: 350px;
+	padding: 10px;
+	border: 10px solid #000;
+	border-collapse: collapse;
+}
+
+table.venue_data td table td {
+	border: none;
+	text-align: center;
 }
