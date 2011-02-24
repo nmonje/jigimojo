@@ -127,7 +127,9 @@ class VenuesController < ApplicationController
 
 	def remove_old_attendees
 		Attendee.all.each do |attendee|
-			if (Time.now - attendee.time > 1.hour)
+			timein = (((Time.now.utc.hour) - attendee.time.hour)*60
+									 + (Time.now.utc.min - attendee.time.min))
+			if (timein >60)
 				attendee.destroy
 			end
 		end
