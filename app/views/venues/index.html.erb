@@ -1,12 +1,17 @@
-<h1>Listing venues</h1>
-
+<div class="your_venues">
+<h2>Your Venues</h2>
+<%= link_to 'New Venue', new_venue_path %>
 <% @venues.each do |venue| %>
-    <h2> <%= link_to venue.title, venue %> </h2> <br />
+    <h3> <%= link_to venue.title, venue %> </h3> <br />
     <%= link_to 'Edit', edit_venue_path(venue) %><br />
     <%= link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete %><br />
 <% end %>
-</table>
+</div>
+<div class="all_venues">
+<h2>All Venues</h2>
+<% @all_venues.each do |venue| %>
+    <h3> <%= link_to venue.title, venue %> </h3> <br />
+<% end %>
+</div>
 
 <br />
-
-<%= link_to 'New Venue', new_venue_path %>

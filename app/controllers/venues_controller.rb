@@ -4,6 +4,7 @@ class VenuesController < ApplicationController
   def index
     @user = current_user
     @venues = @user.venues
+    @all_venues = Venue.all
 
     respond_to do |format|
       format.html # index.html.erb

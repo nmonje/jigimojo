@@ -2,15 +2,29 @@ body {
 background-color: #FFF;
 }
 
+
 h1 {
 	margin: 0px 20px 0px 0px;
 	text-align: left; 
-	font-size: 40px;
+	font-size: 50px;
 }
+
+h2 {
+	text-align: left;
+	font-size: 55px;
+	margin: 0px 10px 0px 0px;
+	font-family: 'Slackey', serif;
+	color: #B60000;
+}
+
+h3 {
+	margin: 0px;
+}
+
 
 #splash {
 	text-align:center;
-	font-size: 240px;
+	font-size: 250px;
 }
 
 #dash-logo {
@@ -44,20 +58,43 @@ h1 {
 }
 
 #splash #mojo-logo {
-  text-shadow: 16px 16px 16px #666;
+  text-shadow: 20px 20px 20px #666;
 }
 
-a {
-	text-decoration: none;}
-a {
+a.dashboard_link {
+	font-family: 'Slackey', serif;
+	font-size: 16px;
 	color: #C00;
+	text-decoration: none;
+	font-weight: 400;
+	margin: 0px 20px 0px 10px;
 }
 
-a:visited {
+a.dashboard_link:visited {
 	color: #922;
 }
 
-a:hover {
+a.dashboard_link:hover {
 	color: #F66; 
 	text-decoration: underline;
+}
+
+hr.dashboard {
+	height: 5px;
+	color: #C00;
+	background-color: #000;
+}
+
+hr.dashboard#lower {
+	margin-bottom: 15px;
+}
+
+
+
+.your_venues {
+	float:left;
+}
+
+.all_venues {
+	float:right;
 }

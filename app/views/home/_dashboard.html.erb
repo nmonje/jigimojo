@@ -1,8 +1,12 @@
 <% if user_signed_in? %>
 	<div id="dash-logo"> <h1> <%= render 'home/logo' %> </h1> </div>
-	Welcome <%= current_user.name %>. <%= link_to "Sign out", destroy_user_session_path %>.
-	<%= link_to "Venues", venues_path %>
-	<%= link_to "Check in", new_attendee_path %>
+	<hr class="dashboard"/>
+	Welcome <b> <%= current_user.name %></b>. <br />
+	<%= link_to "Home", root_path, :class => "dashboard_link" %>
+	<%= link_to "Venues", venues_path, :class => "dashboard_link"  %>
+	<%= link_to "Check in", new_attendee_path, :class => "dashboard_link"  %>
+	<%= link_to "Sign out", destroy_user_session_path, :class => "dashboard_link"  %>
+	<hr class="dashboard" id="lower"	/>
 <% else %>
 	<%= link_to "Log in", new_user_session_path %> or <%= link_to "register", new_user_registration_path %>.
 <% end %>
