@@ -18,12 +18,23 @@ class AttendeesController < ApplicationController
   # POST /attendees
   # POST /attendees.xml
   def create
-  	previous = Attendee.find_all_by_user_id(params[:attendee][:user_id])
+  	if params[:venue_id]
+  		venue_id = params[:venue_id]
+  	elsif params[:attendee][:venue_id]
+  		venue_id = params[:attendee][:venue_id]
+		end
+		if not current_user.nil?
+			user_id = current_user.id
+		elsif params[:user_id]
+  		user_id = params[:user_id]
+		elsif params[:attendee][:user_id]
+  		user_id = params[:attendee][:user_id]
+		end
+  	previous = Attendee.find_all_by_user_id(user_id)
   	if not previous.nil?
   		previous.each {|p| p.destroy}
   	end
-    @attendee = Attendee.new(params[:attendee])
-    @attendee.time = Time.now
+    @attendee = Attendee.new(:user_id => user_id, :venue_id => venue_id, :time => Time.now)
     
     @patron = Patron.find_by_user_id_and_venue_id(@attendee.user_id, @attendee.venue_id)
     if @patron.nil?
