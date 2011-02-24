@@ -1,7 +1,7 @@
 module VenuesHelper
 	def remove_old_attendees
 		Attendees.all.each do |attendee|
-			if (Time.now - attendee.time > One.hour)
+			if (Time.now - attendee.time > 1.hour)
 				attendee.destroy
 			end
 		end

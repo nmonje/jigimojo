@@ -40,9 +40,15 @@ class VenuesController < ApplicationController
   
   def attendees
   	@venue = Venue.find(params[:id])
-  	
+  	attendees = []
+  	@venue.attendees.each do |a|
+  		user = User.find_by_id(a.user_id)
+  		patron = Patron.find_by_user_id_and_venue_id(user.id, @venue.id)
+  		attendee = {:name => user.name, :mojo => patron.mojo}
+  		attendees << attendee
+  	end
   	respond_to do |format|
-  		format.json { render :json => @venue.attendees }
+  		format.json { render :json => attendees }
 		end
 	end
   
