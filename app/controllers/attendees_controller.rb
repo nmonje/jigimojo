@@ -23,7 +23,7 @@ class AttendeesController < ApplicationController
 
     respond_to do |format|
       if @attendee.save
-        format.html { redirect_to(@attendee, :notice => 'Attendee was successfully created.') }
+        format.html { redirect_to(root_path, :notice => 'Attendee was successfully created.') }
         format.xml  { render :xml => @attendee, :status => :created, :location => @attendee }
       else
         format.html { render :action => "new" }
